@@ -14,7 +14,6 @@ const useTokenForm = (initialValues) => {
       }
     } else if (name.includes("TokenNum") || name.includes("PerRow")) {
       if (!/^\d+$/.test(value)) {
-        console.log(value)
         error = "Only positive integers are allowed.";
       }
     }

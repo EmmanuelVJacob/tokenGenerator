@@ -1,6 +1,7 @@
 import React from "react";
 import useTokenForm from "../utils/useTokenForm";
 import useGenerateToken from "../utils/useGenerateToken";
+import Tokens from "./Tokens";
 
 const TokenGenerator = () => {
   const { values, errors, handleChange, resetForm } = useTokenForm({
@@ -12,8 +13,9 @@ const TokenGenerator = () => {
     redPerRow: 0,
   });
 
-  const { redTokenNum, blueTokenNum, generateTokens, clearTokens } =
-    useGenerateToken(values);
+  const { redtokens, bluetokens, generateTokens, clearTokens,validationError } =
+    useGenerateToken(values,errors);
+
 
   const handleGenerate = () => {
     generateTokens(values);
@@ -138,6 +140,9 @@ const TokenGenerator = () => {
           Clear
         </button>
       </div>
+      <div className="flex justify-center text-red-400">{validationError}</div>
+     <Tokens values={values} color={'Blue'} Tokens={bluetokens} />
+     <Tokens values={values} color={'Red'} Tokens={redtokens} />
     </div>
   );
 };
